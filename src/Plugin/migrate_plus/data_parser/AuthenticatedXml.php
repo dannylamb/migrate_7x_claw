@@ -54,8 +54,57 @@ class AuthenticatedXml extends Xml {
       ->getResponseContent($url)
       ->getContents();
 
+    // Splice in managed XML datastreams.
+    // NOTE: This gives the datastreams a namespace
+    // of "default".
+    $xml = $this->insertManagedXml($xml, $url);
+//echo($xml);
     return $this->reader->XML($xml, NULL, \LIBXML_NOWARNING);
+  }
 
+  protected function insertManagedXml($foxml, $url) {
+    $doc = new \DomDocument();
+    $doc->loadXML($foxml);
+
+    $xpath = new \DOMXpath($doc);
+    $xpath->registerNamespace("foxml", "info:fedora/fedora-system:def/foxml#");
+    $xpath->registerNamespace("mods", "http://www.loc.gov/mods/v3");
+    
+    // Get the PID
+    $pid = $xpath->query("/foxml:digitalObject/@PID", $doc)->item(0)->nodeValue;
+
+    // Get the latest datastream versions that are managed and xml. 
+    $versions = $xpath->query("/foxml:digitalObject/foxml:datastream[@CONTROL_GROUP = \"M\" ]/foxml:datastreamVersion[position() = last() and @MIMETYPE = \"application/xml\"]", $doc);
+
+    // Get rid of the /objectXML at the end of the url, so we can append
+    // /datastreams/DSID/content to the end instead.
+    $url = trim($url, "/objectXML");
+
+    foreach ($versions as $version) {
+      // The ID of each datastreamVersion element is of the form DSID.VID.
+      // Hack apart the DSID and version number.
+      $ds_vid = $version->getAttribute("ID");
+      $ds_vid = explode('.', $ds_vid);
+      $dsid = $ds_vid[0];
+      $vid = $ds_vid[1];
+
+      // Request the XML datastream from Fedora.
+      $ds_xml = $this->getDataFetcherPlugin()
+      ->getResponseContent($url . '/datastreams/' . $dsid . '/content')
+      ->getContents();
+    
+      // Hack out the root of the datastream XML.
+      $ds_doc = new \DomDocument();
+      $ds_doc->loadXML($ds_xml);
+      $ds_root = $ds_doc->documentElement;
+
+      // Splice it into the datastreamVersion.
+      $xml_content = $doc->createElement("foxml:xmlContent");
+      $xml_content->appendChild($doc->importNode($ds_root, TRUE));
+      $version->appendChild($xml_content);
+    }
+
+    return $doc->saveXml();
   }
 
   /**

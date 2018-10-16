@@ -47,6 +47,22 @@ source:
       label: 'Object label'
       selector: 'foxml:objectProperties/foxml:property[@NAME="info:fedora/fedora-system:def/model#label"]/@VALUE'
     -
+      name: alt_title
+      label: 'Alternative title'
+      selector: 'foxml:datastream[@ID = "MODS"]/foxml:datastreamVersion/foxml:xmlContent/default:mods/default:titleInfo/default:subTitle'
+    -
+      name: identifier 
+      label: 'Identifier'
+      selector: 'foxml:datastream[@ID = "MODS"]/foxml:datastreamVersion/foxml:xmlContent/default:mods/default:identifier'
+    -
+      name: description
+      label: 'Description'
+      selector: 'foxml:datastream[@ID = "MODS"]/foxml:datastreamVersion/foxml:xmlContent/default:mods/default:abstract'
+    -
+      name: extent 
+      label: 'Extent'
+      selector: 'foxml:datastream[@ID = "MODS"]/foxml:datastreamVersion/foxml:xmlContent/default:mods/default:physicalDescription/default:extent'
+    -
       name: member_of_collection
       label: 'Member of Collections'
       selector: 'foxml:datastream[@ID = "RELS-EXT" and @CONTROL_GROUP = "X" ]/foxml:datastreamVersion[position() = last()]/foxml:xmlContent/rdf:RDF/rdf:Description/fedora:isMemberOfCollection/@rdf:resource'
@@ -77,6 +93,10 @@ process:
     source: lastmodified
     settings:
       validate_format: false
+  field_alternative_title: alt_title
+  field_identifier: identifier
+  field_description: description
+  field_extent: extent
   field_member_of:
     -
       plugin: skip_on_empty
@@ -95,12 +115,12 @@ process:
       plugin: substr
       source: member_of_collection
       start: 11
-  field_tags:
+  field_model:
     plugin: entity_lookup
     source: constants/image
     value_key: name
     bundle_key: vid
-    bundle: tags
+    bundle: islandora_models 
     entity_type: taxonomy_term
     ignore_case: true
 destination:
