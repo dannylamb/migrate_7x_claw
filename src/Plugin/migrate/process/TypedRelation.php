@@ -59,14 +59,17 @@ class TypedRelation extends ProcessPluginBase {
       return [];
     }
 
-    // We're expecting an array of ids.
+    // Force input to be an array.
     if (!is_array($value)) {
-      throw new MigrateException("Process input is not an array");
+      $value = [$value];
     }
 
     // Make sure there's a role array, and that it lines up with the ids.
     if (isset($this->configuration['role_source'])) {
       $roles = $row->getSourceProperty($this->configuration['role_source']);
+      if (!is_array($roles)) {
+        $roles = [$roles];
+      }
       if (count($roles) != count($value)) {
         throw new MigrateException("Input and roles arrays must be parallel");
       }

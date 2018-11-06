@@ -28,9 +28,14 @@ class MergeIgnoreEmpty extends Merge {
     else {
       // Trick the merge with empty arrays when some 'source' don't have values.
       for ($i = 0; $i < count($value); $i++) {
+        if (!is_array($value[$i])) {
+          $value[$i] = [$value[$i]];
+        }
+/*
         if (empty($value[$i])) {
           $value[$i] = [];
         }
+*/
       }
     }
     // Do a regular merge, which now shouldn't throw a MigrateException.
