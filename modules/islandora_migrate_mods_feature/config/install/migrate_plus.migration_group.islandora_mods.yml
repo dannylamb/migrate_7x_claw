@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: islandora_mods
+label: 'Islandora MODS'
+description: 'Example migrations for images with MODS metadata files'
+source_type: 'Binaries and MODS files with a CSV Manifest'
+module: null
+shared_configuration: null

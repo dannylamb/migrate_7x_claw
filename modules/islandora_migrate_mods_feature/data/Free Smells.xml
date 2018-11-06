@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<mods xmlns="http://www.loc.gov/mods/v3" xmlns:mods="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <titleInfo>
+    <title>Free Smells</title>
+    <subTitle/>
+  </titleInfo>
+  <name type="corporate">
+    <namePart>The Collab</namePart>
+    <role>
+      <roleTerm authority="marcrelator" type="text">Collaborator</roleTerm>
+    </role>
+  </name>
+  <name type="corporate">
+    <namePart>Pexels</namePart>
+    <role>
+      <roleTerm authority="marcrelator" type="text">Publisher</roleTerm>
+    </role>
+  </name>
+  <typeOfResource>still image</typeOfResource>
+  <genre authority="lctgm">Neon signs</genre>
+  <originInfo>
+    <dateIssued>2018-03-01</dateIssued>
+    <publisher>Pexels</publisher>
+    <place>
+      <placeTerm authority="marccountry" type="code">United States of America</placeTerm>
+    </place>
+    <place>
+      <placeTerm type="text">San Francisco</placeTerm>
+    </place>
+  </originInfo>
+  <language>
+    <languageTerm authority="iso639-2b" type="code">eng</languageTerm>
+  </language>
+  <abstract>Sign in a restaurant window advertising free smells.</abstract>
+  <identifier type="local"/>
+  <physicalDescription>
+    <form authority="marcform">nonprojected graphic</form>
+    <extent>1 item</extent>
+  </physicalDescription>
+  <note>Taken out of context, this photo is hilarious.</note>
+  <subject>
+    <topic>Funny</topic>
+    <topic>Neon signs</topic>
+    <geographic>Portland</geographic>
+    <temporal>Night</temporal>
+    <hierarchicalGeographic>
+      <continent>North America</continent>
+      <country>United States of America</country>
+      <province>Oregon</province>
+      <region>Northwest</region>
+      <county>Multnomah County</county>
+      <city>Portland</city>
+      <citySection>Downtown</citySection>
+    </hierarchicalGeographic>
+    <cartographics>
+      <coordinates/>
+    </cartographics>
+  </subject>
+</mods>

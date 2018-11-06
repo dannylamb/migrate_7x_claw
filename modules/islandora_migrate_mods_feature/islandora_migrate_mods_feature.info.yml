@@ -1,0 +1,7 @@
+name: 'Islandora Migrate Mods Feature'
+type: module
+description: 'Example of migrating images with MODS metadata to CLAW'
+core: 8.x
+package: Islandora
+dependencies:
+  - migrate_plus

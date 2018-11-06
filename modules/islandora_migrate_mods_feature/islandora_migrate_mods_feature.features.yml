@@ -1,0 +1,3 @@
+bundle: islandora
+required:
+  - migrate_plus.migration_group.islandora_mods

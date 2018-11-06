@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<mods xmlns="http://www.loc.gov/mods/v3" xmlns:mods="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <titleInfo>
+    <title>Nothing to See Here</title>
+    <subTitle>Move along people</subTitle>
+  </titleInfo>
+  <name type="personal">
+    <namePart>Argelis Rebolledo</namePart>
+    <role>
+      <roleTerm authority="marcrelator" type="text">Photographer</roleTerm>
+    </role>
+  </name>
+  <name type="corporate">
+    <namePart>Pexels</namePart>
+    <role>
+      <roleTerm authority="marcrelator" type="text">Publisher</roleTerm>
+    </role>
+  </name>
+  <typeOfResource>still image</typeOfResource>
+  <genre authority="lctgm">Neon signs</genre>
+  <originInfo>
+    <dateIssued>2018-05-01</dateIssued>
+    <publisher>Pexels</publisher>
+    <place>
+      <placeTerm authority="marccountry" type="code">United States of America</placeTerm>
+    </place>
+    <place>
+      <placeTerm type="text">San Francisco</placeTerm>
+    </place>
+  </originInfo>
+  <language>
+    <languageTerm authority="iso639-2b" type="code">eng</languageTerm>
+  </language>
+  <abstract>A sign above a building that says "Nothing to see here"</abstract>
+  <identifier type="local"/>
+  <physicalDescription>
+    <form authority="marcform">nonprojected graphic</form>
+    <extent>1 item</extent>
+  </physicalDescription>
+  <note/>
+  <subject>
+    <topic/>
+    <topic>Neon signs</topic>
+    <geographic/>
+    <temporal/>
+    <temporal>Night</temporal>
+    <hierarchicalGeographic>
+      <continent>North America</continent>
+      <country>United States of America</country>
+      <province>California</province>
+      <region>West</region>
+      <county>Marin County</county>
+      <city>San Francisco</city>
+      <citySection>The Tenderloin</citySection>
+    </hierarchicalGeographic>
+    <cartographics>
+      <coordinates/>
+    </cartographics>
+  </subject>
+</mods>

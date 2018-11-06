@@ -1,0 +1,140 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - islandora_migrate_mods_feature
+id: islandora_mods_nodes
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: islandora_mods
+label: 'Islandora MODS Nodes'
+source:
+  plugin: directory 
+  urls:
+    - /var/www/html/drupal/web/modules/contrib/migrate_7x_claw/modules/islandora_migrate_mods_feature/data
+  extensions:
+    - xml 
+  data_fetcher_plugin: file
+  data_parser_plugin: simple_xml 
+  constants:
+    uid: 1 
+  item_selector: /mods:mods
+  fields:
+    -
+      name: name 
+      label: Name 
+      selector: mods:titleInfo/mods:title 
+    -
+      name: subtitle 
+      label: 'Subtitle'
+      selector: 'mods:titleInfo/mods:subTitle'
+    -
+      name: resource_type 
+      label: 'Type of Resource'
+      selector: 'mods:typeOfResource'
+    -
+      name: identifier 
+      label: 'Identifier'
+      selector: 'mods:identifier'
+    -
+      name: description 
+      label: 'Description'
+      selector: 'mods:abstract'
+    -
+      name: extent 
+      label: 'Physical Extent'
+      selector: 'mods:physicalDescription/mods:extent'
+    -
+      name: person_agents 
+      label: "Person agents"
+      selector: '/mods:mods/mods:name[@type = "personal"]/mods:namePart'
+    -
+      name: person_roles
+      label: "Person roles"
+      selector: '/mods:mods/mods:name[@type = "personal"]/mods:role/mods:roleTerm'
+    -
+      name: corporate_agents 
+      label: "Corporate agents"
+      selector: '/mods:mods/mods:name[@type = "corporate"]/mods:namePart'
+    -
+      name: corporate_roles
+      label: "Corporate roles"
+      selector: '/mods:mods/mods:name[@type = "corporate"]/mods:role/mods:roleTerm'
+    -
+      name: subject 
+      label: "Subject"
+      selector: '/mods:mods/mods:subject/mods:temporal[node()] | /mods:mods/mods:subject/mods:topic[node()]'
+    -
+      name: geographic 
+      label: "Geographic"
+      selector: '/mods:mods/mods:subject/mods:geographic[node()] | /mods:mods/mods:subject/mods:hierarchicalGeographic/*[node()] | /mods:mods/mods:originInfo/mods:place/mods:placeTerm[node()]'
+  ids:
+    name:
+      type: string
+process:
+  title: name 
+  uid:
+    plugin: default_value
+    default_value: 1
+  status:
+    plugin: default_value
+    default_value: 1
+  temp_person:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: person_agents 
+    -
+      plugin: migration_lookup 
+      migration: islandora_mods_person
+      no_stub: true
+    -
+      plugin: typed_relation 
+      role_source: person_roles
+  temp_corporate:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: corporate_agents
+    -
+      plugin: migration_lookup 
+      migration: islandora_mods_corporate
+      no_stub: true
+    -
+      plugin: typed_relation 
+      role_source: corporate_roles
+  field_linked_agent:
+    plugin: merge_ignore_empty
+    source:
+      - '@temp_person'
+      - '@temp_corporate'
+  temp_subject:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: subject 
+    -
+      plugin: migration_lookup 
+      migration: islandora_mods_subject
+      no_stub: true
+  temp_geographic:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: geographic 
+    -
+      plugin: migration_lookup 
+      migration: islandora_mods_geographic
+      no_stub: true
+  field_subject:
+    plugin: merge_ignore_empty
+    source:
+      - '@temp_subject'
+      - '@temp_geographic'
+destination:
+  plugin: 'entity:node'
+  default_bundle: islandora_object 
+migration_dependencies: null

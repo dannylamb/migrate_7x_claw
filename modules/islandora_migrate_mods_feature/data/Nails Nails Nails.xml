@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<mods xmlns="http://www.loc.gov/mods/v3" xmlns:mods="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <titleInfo>
+    <title>Nails Nails Nails</title>
+    <subTitle></subTitle>
+  </titleInfo>
+  <name type="personal">
+    <namePart>Clem Onojeghuo</namePart>
+    <role>
+      <roleTerm authority="marcrelator" type="text">Photographer</roleTerm>
+    </role>
+  </name>
+  <name type="corporate">
+    <namePart>Pexels</namePart>
+    <role>
+      <roleTerm authority="marcrelator" type="text">Publisher</roleTerm>
+    </role>
+  </name>
+  <typeOfResource>still image</typeOfResource>
+  <genre authority="lctgm">Neon signs</genre>
+  <originInfo>
+    <dateIssued>2018-01-01</dateIssued>
+    <publisher>Pexels</publisher>
+    <place>
+      <placeTerm authority="marccountry" type="code">United States of America</placeTerm>
+    </place>
+    <place>
+      <placeTerm type="text">San Francisco</placeTerm>
+    </place>
+  </originInfo>
+  <language>
+    <languageTerm authority="iso639-2b" type="code">eng</languageTerm>
+  </language>
+  <abstract>A sign pointing towards a nail salon.</abstract>
+  <identifier type="local"></identifier>
+  <physicalDescription>
+    <form authority="marcform">nonprojected graphic</form>
+    <extent>1 item</extent>
+  </physicalDescription>
+  <note></note>
+  <subject>
+    <topic>Neon signs</topic>
+    <geographic>London</geographic>
+    <temporal>Night</temporal>
+    <hierarchicalGeographic>
+      <continent>Europe</continent>
+      <country>United Kingdom</country>
+      <province>England</province>
+      <region>London Region</region>
+      <county>Greater London</county>
+      <city>London</city>
+      <citySection>West End</citySection>
+    </hierarchicalGeographic>
+    <cartographics>
+      <coordinates></coordinates>
+    </cartographics>
+  </subject>
+</mods>
