@@ -50,27 +50,27 @@ source:
     -
       name: person_agents 
       label: "Person agents"
-      selector: '/mods:mods/mods:name[@type = "personal"]/mods:namePart'
+      selector: 'mods:name[@type = "personal"]/mods:namePart'
     -
       name: person_roles
       label: "Person roles"
-      selector: '/mods:mods/mods:name[@type = "personal"]/mods:role/mods:roleTerm'
+      selector: 'mods:name[@type = "personal"]/mods:role/mods:roleTerm'
     -
       name: corporate_agents 
       label: "Corporate agents"
-      selector: '/mods:mods/mods:name[@type = "corporate"]/mods:namePart'
+      selector: 'mods:name[@type = "corporate"]/mods:namePart'
     -
       name: corporate_roles
       label: "Corporate roles"
-      selector: '/mods:mods/mods:name[@type = "corporate"]/mods:role/mods:roleTerm'
+      selector: 'mods:name[@type = "corporate"]/mods:role/mods:roleTerm'
     -
       name: subject 
       label: "Subject"
-      selector: '/mods:mods/mods:subject/mods:temporal[node()] | /mods:mods/mods:subject/mods:topic[node()]'
+      selector: 'mods:subject/mods:temporal[node()] | mods:subject/mods:topic[node()]'
     -
       name: geographic 
       label: "Geographic"
-      selector: '/mods:mods/mods:subject/mods:geographic[node()] | /mods:mods/mods:subject/mods:hierarchicalGeographic/*[node()] | /mods:mods/mods:originInfo/mods:place/mods:placeTerm[node()]'
+      selector: 'mods:subject/mods:geographic[node()] | mods:subject/mods:hierarchicalGeographic/*[node()] | mods:originInfo/mods:place/mods:placeTerm[node()]'
   ids:
     name:
       type: string
@@ -82,6 +82,10 @@ process:
   status:
     plugin: default_value
     default_value: 1
+  field_alternative_title: subtitle
+  field_identifier: identifier
+  field_description: description
+  field_extent: extent
   temp_person:
     -
       plugin: skip_on_empty
