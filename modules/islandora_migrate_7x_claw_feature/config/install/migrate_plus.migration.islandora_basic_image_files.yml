@@ -79,13 +79,13 @@ process:
       text/xml: xml
       application/xml: xml
       application/rdf+xml: xml
+      application/x-binary: bin
       image/jpeg: jpg
       image/tiff: tiff
       image/tif: tiff
       image/jpg: jpg
       image/png: png
       image/gif: gif
-      application/x-binary: bin
   filename:
     plugin: concat
     delimiter: .
