@@ -85,6 +85,7 @@ process:
       image/jpg: jpg
       image/png: png
       image/gif: gif
+      application/x-binary: bin
   filename:
     plugin: concat
     delimiter: .
